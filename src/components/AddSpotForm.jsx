@@ -21,6 +21,7 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
   const [ssid, setSsid] = useState('');
   const [notes, setNotes] = useState('');
   const [strength, setStrength] = useState([3]); // Default strength is 3
+  const [frequency, setFrequency] = useState(['2.4']); // Default frequency is 2.4
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,6 +36,7 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
       lng: position.lng,
       ssid: ssid,
       strength: strength[0],
+      freq: frequency[0],
       notes: notes,
       user_id: session.user.id, // Associate the spot with the logged-in user
     }).select();
@@ -84,6 +86,23 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
                   onValueChange={setStrength}
                 />
                 <span className="font-bold text-lg">{strength[0]}</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label className="text-right">Frequency</Label>
+              <div className="col-span-3 flex items-center gap-4">
+                <Slider
+                  id="frequency"
+                  min={0}
+                  max={2}
+                  step={1}
+                  value={frequency.map(f => f === '2.4' ? 0 : f === '5' ? 1 : 2)}
+                  onValueChange={(value) => {
+                    const freqMap = ['2.4', '5', '6'];
+                    setFrequency([freqMap[value[0]]]);
+                  }}
+                />
+                <span className="font-bold text-lg">{frequency[0]} GHz</span>
               </div>
             </div>
              {position && (
