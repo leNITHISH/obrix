@@ -1,3 +1,4 @@
+// src/components/AddSpotForm.jsx
 import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../context/AuthContext';
@@ -76,6 +77,7 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label className="text-right">Strength</Label>
+              {/* Slider will automatically inherit the --primary color for its track */}
               <div className="col-span-3 flex items-center gap-4">
                 <Slider
                   id="strength"
@@ -90,6 +92,7 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label className="text-right">Frequency</Label>
+              {/* Slider will automatically inherit the --primary color for its track */}
               <div className="col-span-3 flex items-center gap-4">
                 <Slider
                   id="frequency"
@@ -115,6 +118,7 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
             )}
           </div>
           <DialogFooter>
+            {/* THEMED: Button uses default style, inheriting --primary color */}
             <Button type="submit" disabled={loading}>
               {loading ? 'Submitting...' : 'Submit Spot'}
             </Button>
@@ -124,4 +128,3 @@ export default function AddSpotForm({ isOpen, setIsOpen, position }) {
     </Dialog>
   );
 }
-

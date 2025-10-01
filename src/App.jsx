@@ -96,24 +96,25 @@ function App() {
         <Auth />
       </div>
 
-      {/* Get Current Location button in bottom left corner */}
+      {/* Action bar with three controls aligned */}
       {session && (
-        <div className="absolute bottom-10 left-4 z-[1000]">
+        <div className="absolute z-[1000] left-1/2 -translate-x-1/2 flex gap-3 items-center"
+             style={{ bottom: window.innerWidth < 640 ? '15%' : '5%' }}>
+          {/* THEMED: Removed custom bg/text classes. Use default primary button (variant="default"). */}
           <Button 
             onClick={getCurrentLocation} 
             disabled={gettingLocation}
-            variant="outline"
-            className="bg-white/90 text-black hover:bg-white"
+            variant="default" 
+            // Removed: className="bg-[#63ff0f] text-black hover:bg-[#63ff0f]/90 border border-white"
           >
             {gettingLocation ? 'Getting Location...' : 'Get Current Location'}
           </Button>
-        </div>
-      )}
-
-      {/* Conditionally render the "Add Spot" button only if a user is logged in */}
-      {session && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[1000]">
-          <Button size="lg" onClick={openAddSpotForm}>
+          {/* THEMED: Removed custom bg/text classes. Use default primary button (variant="default"). */}
+          <Button 
+            onClick={openAddSpotForm} 
+            variant="default" 
+            // Removed: className="bg-[#63ff0f] text-black hover:bg-[#63ff0f]/90 border border-white"
+          >
             Add New WiFi Spot
           </Button>
         </div>
@@ -130,5 +131,3 @@ function App() {
 }
 
 export default App;
-
-
