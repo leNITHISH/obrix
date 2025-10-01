@@ -316,7 +316,7 @@ function MapComponent({ onMapClick, newSpotPosition }) {
             />
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="border-white/20" style={{ background: '#000000', color: BRAND_GREEN, minWidth: '200px' }}>
+        <DropdownMenuContent className="border-white/20" style={{ background: '#000000', color: BRAND_GREEN, minWidth: '200px',  zIndex: 1150 }}>
           <div style={{ padding: 6, fontWeight: 700 }}>Map Settings</div>
           <DropdownMenuSeparator className="bg-white/20" />
           <div style={{ padding: 6 }}>
